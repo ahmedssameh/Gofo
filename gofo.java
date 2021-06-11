@@ -7,10 +7,9 @@ import java.util.Scanner;
 public class gofo extends Ewallet {
     ArrayList<Player> players = new ArrayList<Player>();
     ArrayList<Owner> owners = new ArrayList<Owner>();
-    public ArrayList<Ewallet>Ewallets=new ArrayList<Ewallet>();
-    Ewallet wallet;
-    public ArrayList<Playground>Playgrounds=new ArrayList<>();
-    Playground TargetPlayground=new Playground();
+    public static ArrayList<Ewallet>Ewallets=new ArrayList<Ewallet>();
+    public static ArrayList<Playground>Playgrounds=new ArrayList<>();
+
 
     /**
      * a function to add a player in a players list.
@@ -50,6 +49,16 @@ public class gofo extends Ewallet {
     }
 
     /**
+     * function to display Ewallet.
+     */
+    public void displayEwallet(){
+        for (int i = 0; i < Ewallets.size(); i++) {
+            System.out.println("Ewallet "+ (i+1));
+            System.out.println(Ewallets.get(i));
+        }
+    }
+
+    /**
      * function to add playground after taking permission of admin.
      * @param playground an object that need to be added in playgrounds list.
      */
@@ -65,6 +74,10 @@ public class gofo extends Ewallet {
             System.out.println(":(");
         }
     }
+
+    /**
+     * function to display playgrounds.
+     */
     public void displayPlaygrounds()
     {
         for (int i = 0; i < Playgrounds.size(); i++) {
@@ -80,12 +93,11 @@ public class gofo extends Ewallet {
      */
     public void searchPlayground(String Location,String Date) {
         Boolean flag=false;
-        ArrayList<Playground>result =new ArrayList<Playground>();
         if((Playgrounds).size()==0){
             System.out.println("No Playgrounds are added in the application");
         }else {
             for (int i = 0; i <(Playgrounds).size();i++){
-                if(Playgrounds.get(i).getLocation()==Location&& Playgrounds.get(i).getDate()==Date){
+                if(Playgrounds.get(i).getLocation().equals(Location)&& Playgrounds.get(i).getDate().equals(Date)){
                     flag=true;
                     System.out.println(Playgrounds.get(i).toString());
                     Scanner in=new Scanner(System.in);
@@ -137,7 +149,7 @@ public class gofo extends Ewallet {
      * @return an answer for adding or not.
      */
     public String permission(){
-        System.out.println("do you want to accept this playground");
+        System.out.println("Hey admin do you want to accept this playground?yes/no");
         Scanner in=new Scanner(System.in);
         String answer=in.next();
         if(answer.toLowerCase().equals("yes")){
