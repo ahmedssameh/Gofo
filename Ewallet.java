@@ -8,7 +8,7 @@ public class Ewallet extends Playground {
     private int WalletID;
     private String Password;
     private float Balance;
-    private ArrayList<Ewallet>Ewallets=new ArrayList<Ewallet>();
+    private static ArrayList<Ewallet>Ewallets=new ArrayList<Ewallet>();
 
     /**
      * constructor to set the values of the Ewallet's details.
@@ -32,7 +32,27 @@ public class Ewallet extends Playground {
      * @param wallet specific wallet.
      */
     public void AddEwallet(Ewallet wallet){
+
         Ewallets.add(wallet);
+    }
+
+    /**
+     * to string to display ewallets information.
+     * @return Ewallets information
+     */
+    public String toString(){
+        return "ID: "+ this.getWalletID()+
+                "\nPassword: "+ this.getPassword() +
+                "\nbalance: "+ this.getBalance();
+
+    }
+
+    /**
+     * Getter for balance.
+     * @return balance of the Ewallet.
+     */
+    public float getBalance() {
+        return Balance;
     }
 
     /**
@@ -44,8 +64,7 @@ public class Ewallet extends Playground {
     public boolean Signin(int ID,String password){
         boolean flag=false;
         for(int i=0;i<Ewallets.size();i++){
-            Ewallets.get(i).setPassword(password);
-            if((Ewallets.get(i).getWalletID()==ID)&&(Ewallets.get(i).getPassword()==password)){
+            if(Ewallets.get(i).getWalletID()==ID&&Ewallets.get(i).getPassword().equals(password)){
                 flag=true;
                 Scanner in=new Scanner(System.in);
                 System.out.println("enter the amount of money");
