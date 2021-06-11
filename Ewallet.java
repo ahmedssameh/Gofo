@@ -4,6 +4,7 @@ import java.util.Scanner;
 /**
  * class to handle Ewallets of the application users.
  */
+
 public class Ewallet extends Playground {
     private int WalletID;
     private String Password;
